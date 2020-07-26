@@ -32,15 +32,22 @@ class RobotToy
      */
     public function place($x, $y, $f = null): void
     {
-        if (!$this->isPositionValid($x, $y)) {
-            return;
-        }
+        try {
+            if (!$this->isPositionValid($x, $y)) {
+                return;
+            }
 
-        $this->setPositionX($x);
-        $this->setPositionY($y);
-        $this->setFacing($f);
+            $this->setPositionX($x);
+            $this->setPositionY($y);
+            $this->setFacing($f);
+        } catch (TypeError $e) {
+            printf( "Invalid position given \n");
+        }
     }
 
+    /**
+     * move the robot
+     */
     public function move()
     {
         // get current position and facing
@@ -108,7 +115,7 @@ class RobotToy
     }
 
     /**
-     *
+     * print out the current robot position
      */
     public function report()
     {
@@ -120,9 +127,9 @@ class RobotToy
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getPositionX()
+    public function getPositionX(): int
     {
         return $this->positionX;
     }
@@ -131,7 +138,7 @@ class RobotToy
      * @param $positionX
      * @return RobotToy
      */
-    public function setPositionX($positionX): self
+    public function setPositionX(int $positionX): self
     {
         if (!$this->isPositionValid($positionX, $this->getPositionY())) {
             return $this;
@@ -142,9 +149,9 @@ class RobotToy
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getPositionY()
+    public function getPositionY(): int
     {
         return $this->positionY;
     }
@@ -153,7 +160,7 @@ class RobotToy
      * @param $positionY
      * @return RobotToy
      */
-    public function setPositionY($positionY): self
+    public function setPositionY(int $positionY): self
     {
         if (!$this->isPositionValid($this->getPositionX(), $positionY)) {
             return $this;
@@ -164,9 +171,9 @@ class RobotToy
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getFacing()
+    public function getFacing(): string
     {
         return $this->facing;
     }
@@ -223,7 +230,7 @@ class RobotToy
     }
 
     /**
-     * this function return all direction in on order, which MUST not be changed
+     * this function returns all directions in a particular order, which MUST not be changed
      */
     public function getAllDirection()
     {
