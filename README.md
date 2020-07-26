@@ -31,14 +31,14 @@ Please _note_ that the inputs come from `inputfile.txt`, feel free to change the
 
 #### Input format 
 
-* place(x,y,facing) example: place(1,2,north)
+* place x,y,facing example: place 1,2,north
 * move
 * left
 * right
 * report 
 
 **Note**
-If there is no `place` function or an invalid place given at the beginning of the input file, then it falls back to original place which 0,0 and facing North.
+If there is no `place` function or an invalid position given at the beginning of the input file, then it falls back to original position, which is 0,0 and facing North.
 
 You can use any combination of these functions with no limitation! 
 
