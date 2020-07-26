@@ -18,7 +18,7 @@ $ composer install
 * As a player, I don't like my robot falls off the table and any actions can cause this should be ignored
 * As a product owner, I'd like all the logic protected by unit testing, so I can deploy continuously with high confidence
 
-###Let's play
+### Let's play
 To be able to play with this robot, please simply run:
 
 ```sh
