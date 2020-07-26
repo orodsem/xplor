@@ -9,29 +9,27 @@ $ composer install
 
 **Acceptance Criteria**
 - 
-* As a player I'd like to put the robot to place the robot on 0,0 and facing North, by default
+* As a player, I'd like to place the robot on 0,0 and facing North, by default
 * As a player, I'd like to limit the table size to 5 x 5 unit (0 - 4)
 * As a player, I'd like to be able to place the robot anywhere on the table that I'd like
 * As a player, I'd like to be able to turn the robot to lft or right
-* As a player, I'd like to be able to move the robot
-* As a player, I'd like to be able to see where the robot is and generate a report
-* As a player, I don't like my robot fall off the table and any actions can cause this should be ignored
+* As a player, I'd like to be able to move the robot as long as it won't fall off the table
+* As a player, I'd like to be able to see where the robot located and generate a report
+* As a player, I don't like my robot falls off the table and any actions can cause this should be ignored
 * As a product owner, I'd like all the logic protected by unit testing, so I can deploy continuously with high confidence
 
 ###Let's play
+To be able to play with this robot, please simply run:
+
 ```sh
 $ php run.php
 
-Robot placed on 1, 3 and facing: [NORTH] 
-Robot placed on 1, 3 and facing: [WEST] 
-Robot placed on 0, 3 and facing: [WEST] 
 Robot placed on 0, 3 and facing: [WEST]
 ```
 
-**Note** 
-This file reads the input from `inputfile.txt` feel free to change the input
+Please _note_ that the inputs come from `inputfile.txt`, feel free to change the input as explained below:
 
-###Input format 
+####Input format 
 
 * place(x,y,facing) example: place(1,2,north)
 * move
@@ -40,10 +38,29 @@ This file reads the input from `inputfile.txt` feel free to change the input
 * report 
 
 **Note**
-If there is no `place` function found at the begining of this file, then it falls back to original place which 0,0 and facing North.
+If there is no `place` function or an invalid place given at the beginning of the input file, then it falls back to original place which 0,0 and facing North.
 
 You can use any combination of these functions with no limitation! 
 
+
+### Application structure
+The main functionality and logic can be found at:
+```sh
+src/RobotToy.php
+```
+The unit tests can be found at:
+```sh
+tests/RobotToyTest.php
+```
+
+###Run tests
+```sh
+phpunit --coverage-html report tests/
+```
+This generate a code coverage report, which can be foud at:
+```sh
+report/index.html
+```
 
 
 
