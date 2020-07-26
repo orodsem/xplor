@@ -95,6 +95,22 @@ class RobotToyTest extends TestCase
         $this->assertEquals(0, $robot->getPositionY());
     }
 
+    public function testPositionXMustBeInteger()
+    {
+        $robot = new RobotToy();
+        $robot->place("foo",2,RobotToy::WEST);
+
+        $this->expectOutputString("Invalid position given \n");
+    }
+
+    public function testPositionYMustBeInteger()
+    {
+        $robot = new RobotToy();
+        $robot->place(1,"bar",RobotToy::WEST);
+
+        $this->expectOutputString("Invalid position given \n");
+    }
+
     // move vertically scenarios
     public function testMoveVerticallyToNorth()
     {
