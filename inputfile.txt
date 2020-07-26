@@ -1,10 +1,9 @@
-place 1,3,north
+place 2,3,north
 move
-report
 left
-report
 move
+right
 move
-report
+right
 move
 report
