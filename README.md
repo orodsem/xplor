@@ -24,7 +24,7 @@ To be able to play with this robot, please simply run:
 ```sh
 $ php run.php
 
-Robot placed on 0, 3 and facing: [WEST]
+Robot placed on 2, 4 and facing: [EAST]
 ```
 
 Please _note_ that the inputs come from `inputfile.txt`, feel free to change the input as explained below:
