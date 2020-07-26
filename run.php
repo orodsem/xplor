@@ -10,8 +10,7 @@ while(!feof($file))
 
     if (strpos($func, 'place') !== false) {
         // place the robot
-        $func = str_replace('place(', '', $func);
-        $func = str_replace(')', '', $func);
+        $func = str_replace('place ', '', $func);
 
         $parameters = explode(',', $func);
         $robot->place($parameters[0], $parameters[1], $parameters[2]);
