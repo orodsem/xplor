@@ -29,7 +29,7 @@ Robot placed on 0, 3 and facing: [WEST]
 
 Please _note_ that the inputs come from `inputfile.txt`, feel free to change the input as explained below:
 
-####Input format 
+#### Input format 
 
 * place(x,y,facing) example: place(1,2,north)
 * move
@@ -53,7 +53,7 @@ The unit tests can be found at:
 tests/RobotToyTest.php
 ```
 
-###Run tests
+### Run tests
 ```sh
 phpunit --coverage-html report tests/
 ```
