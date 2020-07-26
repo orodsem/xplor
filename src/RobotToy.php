@@ -3,25 +3,21 @@
 
 class RobotToy
 {
+    // facing options
     const NORTH = 'NORTH';
     const EAST  = 'EAST';
     const SOUTH = 'SOUTH';
     const WEST  = 'WEST';
 
-    private $positionX;
-    private $positionY;
-    private $facing;
+    // min position
+    const MIN_POS = 0;
+    // max position
+    const MAX_POS = 4;
 
-    /**
-     * RobotToy constructor.
-     * default is 0,0 facing North
-     */
-    public function __construct()
-    {
-        $this->setPositionX(0);
-        $this->setPositionY(0);
-        $this->setFacing(self::NORTH);
-    }
+    // default values
+    private $positionX = self::MIN_POS;
+    private $positionY = self::MIN_POS;
+    private $facing = self::NORTH;
 
     /**
      * place the robot
@@ -200,11 +196,11 @@ class RobotToy
      */
     private function isPositionValid($positionX, $positionY): bool
     {
-        if ($positionX < 0 || $positionX > 4) {
+        if ($positionX < self::MIN_POS || $positionX > self::MAX_POS) {
             return false;
         }
 
-        if ($positionY < 0 || $positionY > 4) {
+        if ($positionY < self::MIN_POS || $positionY > self::MAX_POS) {
             return false;
         }
 

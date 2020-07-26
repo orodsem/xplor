@@ -10,8 +10,8 @@ class RobotToyTest extends TestCase
     {
         $robot = new RobotToy();
 
-        $this->assertEquals(0, $robot->getPositionX());
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
         $this->assertEquals(RobotToy::NORTH, $robot->getFacing());
     }
 
@@ -20,7 +20,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->place(-1,2,RobotToy::WEST);
 
-        $this->assertEquals(0, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
     }
 
     public function testCannotPositionYBeNegative(): void
@@ -28,7 +28,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->place(1,-2,RobotToy::WEST);
 
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
     }
 
     public function testCannotPositionXBeBiggerThanFive(): void
@@ -36,7 +36,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->place(10,2,RobotToy::WEST);
 
-        $this->assertEquals(0, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
     }
 
     public function testCannotPositionYBeBiggerThanFive(): void
@@ -44,7 +44,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->place(10,20,RobotToy::WEST);
 
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
     }
 
     public function testShouldPositionXBeValid(): void
@@ -68,7 +68,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->setPositionX(10);
 
-        $this->assertEquals(0, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
     }
 
     public function testSetPositionYWontTakeBiggerThanFive()
@@ -76,7 +76,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->setPositionY(10);
 
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
     }
 
     public function testSetPositionXWontTakeLessThanZero()
@@ -84,7 +84,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->setPositionX(-1);
 
-        $this->assertEquals(0, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
     }
 
     public function testSetPositionYWontTakeLessThanZero()
@@ -92,7 +92,7 @@ class RobotToyTest extends TestCase
         $robot = new RobotToy();
         $robot->setPositionY(-1);
 
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
     }
 
     public function testPositionXMustBeInteger()
@@ -126,22 +126,22 @@ class RobotToyTest extends TestCase
     public function testMoveInvalidVerticallyToNorthFromNWEdge()
     {
         $robot = new RobotToy();
-        $robot->place(0,4,RobotToy::NORTH);
+        $robot->place(RobotToy::MIN_POS,RobotToy::MAX_POS,RobotToy::NORTH);
         $robot->move();
 
-        $this->assertEquals(0, $robot->getPositionX());
-        $this->assertEquals(4, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MAX_POS, $robot->getPositionY());
         $this->assertEquals(RobotToy::NORTH, $robot->getFacing());
     }
 
     public function testMoveInvalidVerticallyToNorthFromNEEdge()
     {
         $robot = new RobotToy();
-        $robot->place(4,4,RobotToy::NORTH);
+        $robot->place(RobotToy::MAX_POS,RobotToy::MAX_POS,RobotToy::NORTH);
         $robot->move();
 
-        $this->assertEquals(4, $robot->getPositionX());
-        $this->assertEquals(4, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MAX_POS, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MAX_POS, $robot->getPositionY());
         $this->assertEquals(RobotToy::NORTH, $robot->getFacing());
     }
 
@@ -159,22 +159,22 @@ class RobotToyTest extends TestCase
     public function testMoveInvalidVerticallyToSouthFromSWEdge()
     {
         $robot = new RobotToy();
-        $robot->place(0,0,RobotToy::SOUTH);
+        $robot->place(RobotToy::MIN_POS,RobotToy::MIN_POS,RobotToy::SOUTH);
         $robot->move();
 
-        $this->assertEquals(0, $robot->getPositionX());
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
         $this->assertEquals(RobotToy::SOUTH, $robot->getFacing());
     }
 
     public function testMoveInvalidVerticallyToSouthFromSEEdge()
     {
         $robot = new RobotToy();
-        $robot->place(4,0,RobotToy::SOUTH);
+        $robot->place(RobotToy::MAX_POS,RobotToy::MIN_POS,RobotToy::SOUTH);
         $robot->move();
 
-        $this->assertEquals(4, $robot->getPositionX());
-        $this->assertEquals(0, $robot->getPositionY());
+        $this->assertEquals(RobotToy::MAX_POS, $robot->getPositionX());
+        $this->assertEquals(RobotToy::MIN_POS, $robot->getPositionY());
         $this->assertEquals(RobotToy::SOUTH, $robot->getFacing());
     }
 
